@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Calculator</title>
+</head>
+<style>
+    .calcutor{
+        width: 350px;
+        height: 100px;
+        margin: auto;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+        
+        
+    }
+    .calcutor_buttton{
+        width:100%;
+        margin-top: 1em;
+        display: flex;
+        justify-content: space-around;
+        
+
+    }
+    .input_field{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        padding-top: 1em;
+    }
+    .inp{
+        border: none;
+        padding: .5em;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    }
+    button{
+        width: 5em;
+        background: orangered;
+        color:whitesmoke;
+        border: none;
+        padding: .5em;
+        font-weight: 700;
+        border-radius: 3px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    }
+    button.addEventListner{
+        background-color: green;
+    }
+</style>
+<body>
+    <div class="calcutor">
+        <div class="input_field">
+            <input type="text" name="num1" id="num1" placeholder="Enter 1st Number" class="inp">
+            <input type="text" name="num1" id="num2" placeholder="Enter 2nd Number" class="inp">
+            
+        </div>
+    
+        <div class="calcutor_buttton">
+            <button onclick="addition()">Add</button>
+            <button onclick="subtract()">Subtract</button>
+            <button onclick="multple()">Multiply</button>
+            <button onclick="divide()">Divide</button>
+        </div>
+    </div>
+  
+</body>
+<script>
+    function addition(){
+        let number1=document.getElementById("num1").value 
+        let number2=document.getElementById("num2").value 
+        let result = +number1+ +number2  
+        alert(result)
+         
+            
+    }
+    function subtract(){
+        let number1=document.getElementById("num1").value 
+        let number2=document.getElementById("num2").value 
+        let result = +number1 - +number2  
+        alert(result) 
+            
+    }
+    function multple(){
+        let number1=document.getElementById("num1").value 
+        let number2=document.getElementById("num2").value 
+        let result = +number1 * +number2  
+        alert(result) 
+            
+    }    function divide(){
+        let number1=document.getElementById("num1").value 
+        let number2=document.getElementById("num2").value 
+        let result = +number1 / +number2  
+        alert(result) 
+            
+    }
+</script>
+
+</html>
