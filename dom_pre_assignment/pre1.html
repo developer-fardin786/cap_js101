@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="user_name" id="myInput">
+    <button onclick="submit_value()">submit</button>
+    <h3 id="my_button"></h3>
+</body>
+<script>
+
+    function submit_value(){
+      let name=document.getElementById("myInput").value 
+      alert("Entered value: "+name)
+      document.getElementById("my_button").innerText="Entered value: "+name
+
+    }
+
+</script>
+</html>
