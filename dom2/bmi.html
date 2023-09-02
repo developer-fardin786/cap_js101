@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bmi calculator</title>
+</head>
+
+<body>
+    <h1>Check Your BMI</h1>
+    <label for="user_weight">Weight (KG)</label>
+    <input type="text" name="user_weight" id="user_weight">
+    <label for="user_height">Height (Meters) </label>
+    <input type="text" name="user_height" id="user_height">
+    <button onclick="calclute_bmi()">Calclute</button>
+    <button onclick="clear_value()">Clear</button>
+    <h2 id="display"></h2>
+</body>
+<script>
+
+    function calclute_bmi() {
+        let Weight = document.querySelector("#user_weight").value
+        let Height = document.querySelector("#user_height").value
+        let bmi = (Weight) / (Height * Height)
+        console.log(bmi)
+        if (bmi <= 18.4) {
+            document.querySelector("#display").innerText = "UnderWeight"
+        } else if (bmi >= 18.5 && bmi <= 24.9) {
+            document.querySelector("#display").innerText = "Normal Weight"
+
+        } else if (bmi >= 25 && bmi <= 29.9) {
+            document.querySelector("#display").innerText = "Overweight "
+
+        } else {
+            document.querySelector("#display").innerText = "Obese "
+
+        }
+    }
+
+   function clear_value(){
+   document.querySelector("#display").innerText=""
+   document.querySelector("#user_weight").value=""
+   document.querySelector("#user_height").value=""
+   }
+</script>
+
+</html>
