@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min & Max leaderbord</title>
+</head>
+
+<body>
+    <style>
+        .min_max_leaderbord {
+            width: 300px;
+            height: 450px;
+            /* border: 1px solid black; */
+            box-shadow: rgba(69, 68, 68, 0.24) 0px 3px 8px;
+            margin: 0;
+        }
+
+        .min_max {
+            width: 90%;
+            margin: auto;
+            display: flex;
+            justify-content: space-around;
+
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+        }
+
+
+
+        .dis {
+            width: 50px;
+            height: 50px;
+            background-color: rgb(25, 24, 24);
+            color: white;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+        }
+
+        .score {
+            margin-top: 40px;
+            width: 98%;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+
+            box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+        }
+
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            gap: 1em;
+        }
+
+        .enter {
+            width: 100px;
+            height: auto;
+            font-weight: 700;
+            font-size: 1em;
+            background-color: orangered;
+            margin: auto;
+            border: none;
+            border-radius: 4px;
+            margin-top: 5px;
+            padding: 5px;
+            text-align: center;
+        }
+    </style>
+    <div class="min_max_leaderbord">
+        <div class="min_max">
+            <div class="min">
+                <h4>Min</h4>
+                <h5 id="min_dis" class="dis">50</h5>
+            </div>
+            <div class="max">
+                <h4>Max</h4>
+                <h5 id="max_dis" class="dis">100</h5>
+            </div>
+        </div>
+        <div class="score">0</div>
+        <div class="keypad">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>0</button>
+        </div>
+        <button class="enter">Enter</button>
+    </div>
+</body>
+<script>
+
+    let btns = document.querySelectorAll(".keypad > button")
+    let min = document.querySelector("#min_dis")
+    let max = document.querySelector("#max_dis")
+    let disp = document.querySelector(".score")
+    let score = ""
+
+    for (let i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+            score += btns[i].innerText
+            disp.innerText = score
+
+        })
+    }
+
+    let enter_value = document.querySelector(".enter")
+
+    enter_value.addEventListener("click", function () {
+
+        if (+score > +min.innerText && +score < +max.innerText) {
+            disp.innerText = "Please enter new value"
+            alert("please enter valid min value and max value")
+        }
+        else if (+score < +min.innerText) {
+            min.innerText = score
+            disp.innerText = "Please enter new value"
+        } else if (+score > +max.innerText) {
+            max.innerText = score
+            disp.innerText = "Please enter new value"
+        }
+        score = ""
+
+    })
+
+
+
+</script>
+
+</html>
