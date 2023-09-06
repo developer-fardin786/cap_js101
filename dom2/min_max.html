@@ -123,16 +123,15 @@
 
     enter_value.addEventListener("click", function () {
 
-        if (+score > +min.innerText && +score < +max.innerText) {
-            disp.innerText = "Please enter new value"
-            alert("please enter valid min value and max value")
-        }
+        if (+score =="") return
         else if (+score < +min.innerText) {
             min.innerText = score
             disp.innerText = "Please enter new value"
         } else if (+score > +max.innerText) {
             max.innerText = score
             disp.innerText = "Please enter new value"
+        }else{
+            alert("Please enter min or max value ")
         }
         score = ""
 
