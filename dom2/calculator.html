@@ -93,7 +93,7 @@
     let ent_value = ""
     function calculate(event) {
         let enter_value = event.target.innerText
-        console.log(ent_value);
+        // console.log(ent_value);
         if (enter_value == "C") {
             ent_value = ""
             document.querySelector("#dis").innerText = ""
@@ -107,7 +107,7 @@
             let operator=""
             if(enter_value=="*"|| enter_value=="+"||enter_value=="-"||enter_value=="/"){
                operator +=enter_value
-               console.log(operator)
+            //    console.log(operator)
             }
             ent_value +=enter_value
             
