@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULATOR</title>
+</head>
+<style>
+    .calculator {
+        margin: auto;
+        width: 350px;
+        height: 400px;
+        box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+        padding: 5px;
+        border-radius: 5px;
+
+
+    }
+
+    .display {
+        width: 90%;
+        height: 50px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        border-radius: 5px;
+        margin: auto;
+
+    }
+
+    #dis {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .keypad {
+        width: 90%;
+        height: 300px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 8px;
+        margin: auto;
+        margin-top: 15px;
+
+
+    }
+
+    .keypad>button {
+        font-size: 1em;
+        font-weight: 700;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border: none;
+        border-radius: 5px;
+    }
+</style>
+
+<body>
+    <div class="calculator">
+        <div class="display">
+            <h3 id="dis">0</h3>
+        </div>
+        <div class="keypad">
+            <button>0</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>/</button>
+            <button>*</button>
+            <button>-</button>
+            <button>+</button>
+            <button id="equal">=</button>
+            <button id="clear">C</button>
+        </div>
+    </div>
+
+
+</body>
+<script>
+    let btns = document.querySelectorAll(".keypad > button")
+    // console.log(btns)
+    for (let i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", calculate)
+
+    }
+    let ent_value = ""
+    function calculate(event) {
+        let enter_value = event.target.innerText
+        console.log(ent_value);
+        if (enter_value == "C") {
+            ent_value = ""
+            document.querySelector("#dis").innerText = ""
+
+        } else if (enter_value == "=") {
+            document.querySelector("#dis").innerText = eval(ent_value)
+            if(ent_value==""){
+                document.querySelector("#dis").innerText="0"
+            }
+        } else {
+            let operator=""
+            if(enter_value=="*"|| enter_value=="+"||enter_value=="-"||enter_value=="/"){
+               operator +=enter_value
+               console.log(operator)
+            }
+            ent_value +=enter_value
+            
+            document.querySelector("#dis").innerText = ent_value
+            ent_value.replace()
+
+
+        }
+    }
+
+
+</script>
+
+</html>
