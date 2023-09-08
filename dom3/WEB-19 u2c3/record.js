@@ -74,7 +74,6 @@ function displayData(user_datas) {
 
 function sorting(sorting_datas) {
     sorting_datas.sort((a, b) => {
-        console.log(a.experience, "exp")
         return a.experience - b.experience  
 
     })
