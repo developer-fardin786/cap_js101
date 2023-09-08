@@ -14,7 +14,10 @@ my_form.addEventListener("submit",function(event){
  }
  user_data.push(data)
  t_body.innerHTML=""
-  user_data.map((el)=>{
+displayData(user_data)
+})
+function displayData(user_datas){
+  user_datas.map((el)=>{
     const tr=document.createElement("tr")
     const td1=document.createElement("td")
     const td2=document.createElement("td")
@@ -23,4 +26,4 @@ my_form.addEventListener("submit",function(event){
     tr.append(td1,td2)
     t_body.append(tr)
   })
-})
+}
