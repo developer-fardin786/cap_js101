@@ -91,4 +91,18 @@ div {
     color: #2b619e;
     text-decoration: underline;
   }
+  button{
+    background-color: red;
+    color: white;
+    width: 100%;
+    padding:8px;
+    border: none;
+    height: 100%;
+    font-weight: 700;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  button:hover{
+    background: green;
+  }
   

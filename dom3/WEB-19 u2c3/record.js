@@ -13,9 +13,9 @@ let user_data = []
 my_form.addEventListener("submit", function (event) {
     event.preventDefault()
     let emp_role = ""
-    if (exp.value > 5) {
+    if (exp.value >= 5) {
         emp_role = "Senior"
-    } else if (exp.value > 2 && exp.value < 5) {
+    } else if (exp.value >= 2 && exp.value < 5) {
         emp_role = "Junior"
     } else {
         emp_role = "Fresher"
@@ -31,11 +31,9 @@ my_form.addEventListener("submit", function (event) {
         role: emp_role,
 
     }
-    //    console.log(data.mobile_number)/
     user_data.push(data)
     t_body.innerHTML = ""
     displayData(user_data)
-    // sorting(user_data)
 
 })
 
@@ -76,7 +74,7 @@ function displayData(user_datas) {
 function sorting(sorting_datas) {
     sorting_datas.sort((a, b) => {
         console.log(a.experience, "exp")
-        return a.experience - b.experience
+        return a.experience - b.experience  
 
     })
     console.log(user_data, "user data");
