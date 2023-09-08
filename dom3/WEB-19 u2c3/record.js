@@ -13,10 +13,11 @@ let user_data = []
 my_form.addEventListener("submit", function (event) {
     event.preventDefault()
     let emp_role = ""
-    if (exp.value >= 5) {
+    if (exp.value > 5) {
         emp_role = "Senior"
-    } else if (exp.value >= 2 && exp.value < 5) {
+    } else if (exp.value >= 2 && exp.value <= 5) {
         emp_role = "Junior"
+
     } else {
         emp_role = "Fresher"
     }
@@ -77,5 +78,4 @@ function sorting(sorting_datas) {
         return a.experience - b.experience  
 
     })
-    console.log(user_data, "user data");
 }
