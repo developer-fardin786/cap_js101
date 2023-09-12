@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>constructor function</h1>
+</body>
+<script>
+    function BankAccount(accounNumber, name, type, balance) {
+        this.accounNumber = accounNumber
+        this.name = name
+        this.type = type
+        this.balance = balance
+        this.active = true
+        this.deposit = function (amount) {
+            if (amount > 0) {
+                this.balance += amount
+                console.log(`Deposited ${amount} Total Balance ${this.balance}`);
+            } else {
+                console.log(`invalid deposit amount`);
+            }
+        }
+
+        this.withdraw = function (amount) {
+            if (this.active == true && amount > 0 && this.balance >= amount) {
+                this.balance -= amount
+                console.log(`Withdraw ${amount} Total Balance ${this.balance}`);
+            } else {
+                console.log(`Insufficient balance`);
+
+            }
+        }
+
+    }
+    let a_account = new BankAccount(87885545, "Rohan", "saving", 8000)
+    let b_account = new BankAccount(87885545, "Rehan", "saving", 890)
+    let c_account = new BankAccount(87885545, "ayan", "saving", 890)
+    let d_account = new BankAccount(87885545, "rahul", "saving", 890)
+    
+    let bank_account = [a_account, b_account, c_account, d_account]
+
+    function Total_balnce(all_account){
+        let total=0
+
+        for(let el of all_account){
+            if(el.active==true){
+              total +=el.balance
+            }
+        }
+
+        console.log(`Total active account balance = ${total}`);
+    }
+  Total_balnce(bank_account)
+</script>
+
+</html>
