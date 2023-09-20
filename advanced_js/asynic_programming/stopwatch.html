@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stopwatch</title>
+  </head>
+  <style>
+    .display {
+      width: 400px;
+      height: 100px;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+    button {
+      margin: 5px;
+      font-weight: 600;
+      border: none;
+      width: 80px;
+      background-color: green;
+      padding: 10px;
+      color: whitesmoke;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+
+  <body>
+    <div class="display">
+      <h2 id="Stopwatch_display">00:00:00</h2>
+    </div>
+    <div class="button">
+      <button onclick="start()">Start</button>
+      <button onclick="pause()">Pause</button>
+      <button onclick="reset()">Reset</button>
+    </div>
+  </body>
+  <script>
+    let display = document.querySelector("#Stopwatch_display");
+    let ms = 0;
+    let sec = 0;
+    let min = 0;
+    let flag = false;
+    let timer = null;
+    function start() {
+      if (flag == false) {
+        flag = true;
+        timer = setInterval(updatewatch, 10);
+      }
+    }
+    function pause() {
+      flag = false;
+      clearInterval(timer);
+    }
+    function reset() {
+      ms = 0;
+      sec = 0;
+      min = 0;
+      flag = false;
+      clearInterval(timer);
+      display.textContent = "00:00:00";
+    }
+    function updatewatch() {
+      if (flag == true) {
+        ms++;
+      }
+      if (ms == 100) {
+        sec++;
+        ms = 0;
+      }
+      if (sec == 60) {
+        min++;
+        sec = 0;
+      }
+
+      display.textContent = min + ":" + sec + ":" + ms;
+    }
+  </script>
+</html>
