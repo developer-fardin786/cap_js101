@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slide Show</title>
+  </head>
+  <body>
+    <img src="" alt="" />
+    <button onclick="start()">start slide</button>
+    <button onclick="stop()">stop slide</button>
+  </body>
+  <style>
+    img {
+      margin: auto;
+      height: 22rem;
+      width: 100%;
+    }
+  </style>
+  <script>
+    let img_array = [
+      "https://images.unsplash.com/photo-1520209759809-a9bcb6cb3241?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      "https://images.unsplash.com/photo-1602922960044-d48ce791d3c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2065&q=80",
+      "https://images.unsplash.com/photo-1526900913101-88c16676ca02?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2048&q=80",
+      "https://images.unsplash.com/photo-1513818433747-5f175a60caee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      "https://images.unsplash.com/photo-1622977266039-dbb162254c12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1870&q=80",
+      "https://images.unsplash.com/photo-1560011316-77f3185ec566?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1933&q=80",
+      "https://images.unsplash.com/photo-1622977265115-cce36eb43f18?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80",
+      "https://images.unsplash.com/photo-1692624571955-ad757fff0fb8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1991&q=80",
+      "https://images.unsplash.com/photo-1685530043068-2862560b8444?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80",
+      "https://images.unsplash.com/photo-1496458590512-56d2688442b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      "https://images.unsplash.com/photo-1688386210635-40b5aeeaf82c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+      "https://images.unsplash.com/photo-1687462310643-e993a3f09102?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+      "https://images.unsplash.com/photo-1685980027180-eba21bcf6372?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+      "https://images.unsplash.com/photo-1689789939394-1bba4d5ebf6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+      "https://images.unsplash.com/photo-1474476782206-48c6d5461aa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80v",
+      "https://images.unsplash.com/photo-1592207896291-e813d0419bc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80",
+      "https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_1280.jpg",
+      "https://cdn.pixabay.com/photo/2016/11/29/05/45/astronomy-1867616_1280.jpg",
+      "https://cdn.pixabay.com/photo/2014/09/14/18/04/dandelion-445228_1280.jpg",
+      "https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014_1280.jpg",
+      "https://cdn.pixabay.com/photo/2016/10/18/21/22/beach-1751455_640.jpg",
+    ];
+    let imgs = document.querySelector("img");
+    let current_img = 0;
+    let timer = null;
+    let flag = false;
+    imgs.setAttribute("src", img_array[current_img]);
+    function start() {
+      if (flag == false) {
+        flag = true;
+        timer = setInterval(updatimg, 2000);
+      }
+    }
+    function stop() {
+      flag = false;
+      clearInterval(timer);
+    }
+
+    function updatimg() {
+      if (flag == true) current_img++;
+      if (current_img == img_array.length - 1) {
+        current_img = 0;
+      }
+      imgs.setAttribute("src", img_array[current_img]);
+    }
+  </script>
+</html>
