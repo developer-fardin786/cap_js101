@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AUTOMOBILE INHERITANCE MODEL</title>
+  </head>
+  <body>
+    <h2>AUTOMOBILE INHERITANCE MODEL</h2>
+  </body>
+  <script>
+    function scorpio(
+      brand,
+      Fuel_type,
+      NO_of_cylinder,
+      Fuel_tank_capacity,
+      body_type,
+      sitting_capacity,
+      transmissionType,
+      ARAI_Mileage
+    ) {
+      this.brand = brand;
+      this.Fuel_type = Fuel_type;
+      this.NO_of_cylinder = NO_of_cylinder;
+      this.Fuel_tank_capacity = Fuel_tank_capacity;
+      this.body_type = body_type;
+      this.sitting_capacity = sitting_capacity;
+      this.transmissionType = transmissionType;
+      this.ARAI_Mileage = ARAI_Mileage;
+    }
+    scorpio.prototype.ABS = function () {
+      console.log("Anti-lock braking system (Yes)");
+    };
+    scorpio.prototype.power_streering = function () {
+      console.log("Power streeing (Yes)");
+    };
+    scorpio.prototype.Air_bag = function () {
+      console.log("Driving Air Bag (Yes)");
+    };
+    scorpio.prototype.Alloy_Wheels = function () {
+      console.log("Alloy Wheels (Yes)");
+    };
+    let scorpio_Goa = new scorpio(
+      "Mahindra",
+      "Diesel",
+      4,
+      60,
+      "SUV",
+      8,
+      "Automatic",
+      11.79
+    );
+    // console.log(scorpio_Goa,);
+
+    // second generation scorpio
+    // usnig  object.create()
+    let second_generation = {
+      passenger_Airbag: "Passenger Airbag (Yes)",
+      Air_conditioner: function () {
+        console.log("Air Conditioner (Yes)");
+      },
+      blutooth: function () {
+        console.log("blutooth (Yes)");
+      },
+    };
+    second_generation.Air_conditioner();
+    let scorpio_s2 = new Object(second_generation);
+
+    Object.setPrototypeOf(scorpio_s2, scorpio_Goa);
+    console.log(scorpio_s2);
+  </script>
+</html>
