@@ -5,7 +5,6 @@ function set_data() {
   localStorage.setItem("user_age", user_age);
 }
 let tbody = document.querySelector("tbody");
-let table = document.querySelector("table");
 function retrive_display() {
   if (localStorage !== "") {
     let tr = document.createElement("tr");
