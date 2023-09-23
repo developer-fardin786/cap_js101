@@ -52,14 +52,13 @@
       hours = 0;
       minutes = 0;
       seconds = 0;
-      up = 0;
       flag = false;
       clearInterval(timer);
       time.textContent = "00:00:00";
     }
 
-    let up = null;
     function update_time() {
+      let up = null;
       if (flag == true) {
         updated_seconds++;
         if (minutes == 0 && seconds == 0) {
