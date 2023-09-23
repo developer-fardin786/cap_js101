@@ -1,0 +1,13 @@
+table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 60%;
+    margin: auto;
+    text-align: center;
+  }
+  table td,
+table th {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
