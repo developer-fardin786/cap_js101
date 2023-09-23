@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timer countdown</title>
+  </head>
+  <body>
+    <label for="hours">Hours</label>
+    <input type="text" name="hours" id="hours" />
+    <label for="minutes">Minutes</label>
+    <input type="text" name="minutes" id="minute" />
+    <label for="second">Seconds</label>
+    <input type="text" name="second" id="second" />
+
+    <button onclick="start()">start</button>
+    <button onclick="pause()">pause</button>
+    <button onclick="reset()">reset</button>
+    <h2 id="display_time">00:00:00</h2>
+  </body>
+  <script>
+    let hours = null;
+    let minutes = null;
+    let seconds = null;
+    let timer = null;
+    let flag = false;
+    let updated_seconds = 0;
+    let updated_minutes = 0;
+    let time = document.querySelector("#display_time");
+
+    function start() {
+      hours = +document.querySelector("#hours").value;
+      minutes = +document.querySelector("#minute").value;
+      seconds = +document.querySelector("#second").value;
+      if (minutes <= 60 && seconds <= 60) {
+        if (flag == false) {
+          flag = true;
+          timer = setInterval(update_time, 1000);
+        }
+      } else {
+        alert("please enter seconds and minutes lessthan 60");
+      }
+      console.log(seconds);
+    }
+
+    function pause() {
+      flag = false;
+      clearInterval(timer);
+    }
+
+    function reset() {
+      hours = 0;
+      minutes = 0;
+      seconds = 0;
+      up = 0;
+      flag = false;
+      clearInterval(timer);
+      time.textContent = "00:00:00";
+    }
+
+    let up = null;
+    function update_time() {
+      if (flag == true) {
+        updated_seconds++;
+        if (minutes == 0 && seconds == 0) {
+          seconds += 60;
+          minutes = 60;
+          minutes--;
+          hours--;
+        }
+        if (seconds <= 0) {
+          seconds = 60;
+          minutes--;
+        }
+        up = seconds - updated_seconds;
+      }
+      if (up <= 0) {
+        if (minutes >= 1) {
+          seconds += 60;
+          minutes--;
+        }
+      }
+      if (minutes <= 0) {
+        if (hours >= 1) {
+          hours--;
+          minutes = 60;
+        }
+      }
+
+      if (hours == 0 && minutes == 0 && up == 0) {
+        clearInterval(timer);
+        alert("time completed");
+      }
+   
+      time.textContent = +hours + ":" + minutes + ":" + up;
+    }
+  </script>
+</html>
