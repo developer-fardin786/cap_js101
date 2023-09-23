@@ -48,18 +48,18 @@
     }
 
     function reset() {
-      console.log(seconds)
+      console.log(seconds);
       hours = 0;
       minutes = 0;
       seconds = 0;
-      console.log(seconds,"h")
+      console.log(seconds, "h");
       flag = false;
       clearInterval(timer);
       time.textContent = "00:00:00";
     }
 
     function update_time() {
-      let up = null;
+      let up = 0;
       if (flag == true) {
         updated_seconds++;
         if (minutes == 0 && seconds == 0) {
@@ -73,7 +73,6 @@
           minutes--;
         }
         up = seconds - updated_seconds;
-      
       }
       if (up <= 0) {
         if (minutes >= 1) {
@@ -92,7 +91,7 @@
         clearInterval(timer);
         alert("time completed");
       }
-   
+
       time.textContent = +hours + ":" + minutes + ":" + up;
     }
   </script>
