@@ -40,7 +40,6 @@
       } else {
         alert("please enter seconds and minutes lessthan 60");
       }
-      console.log(seconds);
     }
 
     function pause() {
@@ -49,9 +48,11 @@
     }
 
     function reset() {
+      console.log(seconds)
       hours = 0;
       minutes = 0;
       seconds = 0;
+      console.log(seconds,"h")
       flag = false;
       clearInterval(timer);
       time.textContent = "00:00:00";
@@ -59,6 +60,7 @@
 
     function update_time() {
       let up = null;
+      console.log(up)
       if (flag == true) {
         updated_seconds++;
         if (minutes == 0 && seconds == 0) {
@@ -72,6 +74,7 @@
           minutes--;
         }
         up = seconds - updated_seconds;
+      
       }
       if (up <= 0) {
         if (minutes >= 1) {
