@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIMULATION GAME</title>
+  </head>
+  <body>
+    <h2>SIMULATION GAME</h2>
+  </body>
+  <script>
+    function Car_1st_gen(brand, model, speed, fuelType) {
+      this.brand = brand;
+      this.model = model;
+      this.speed = speed;
+      this.fuelType = fuelType;
+    }
+
+    Car_1st_gen.prototype.accelerate = function () {
+      console.log(" increase the speed of the vehicle.");
+    };
+    Car_1st_gen.prototype.brake = function () {
+      console.log(" decrease the speed.");
+    };
+    Car_1st_gen.prototype.refuel = function () {
+      console.log("vehicle is refueling.");
+    };
+
+    let _1st_genrationCar = new Car_1st_gen("suzuki", "swift", 210, "diesel");
+    console.log(_1st_genrationCar);
+    _1st_genrationCar.brake();
+    _1st_genrationCar.accelerate();
+    _1st_genrationCar.refuel();
+
+    function Car(brand, model, speed, fuelType, blutooth) {
+      Car_1st_gen.call(this, brand, model, speed, fuelType);
+      this.blutooth = blutooth;
+      this.honk = function () {
+        console.log("honking sound");
+      };
+    }
+    Car.prototype.numberOfWheels = function () {
+      console.log("6 wheels");
+    };
+
+    Object.setPrototypeOf(Car.prototype, Car_1st_gen.prototype);
+    let second_gen_car = new Car(
+      "suzuki",
+      "swift",
+      210,
+      "diesel",
+      "bluetooth connectivity version 1.2"
+    );
+    console.log(second_gen_car);
+
+    // create an Airplane constructor function
+
+    function Airplane(
+      brand,
+      model,
+      speed,
+      fuelType,
+      numberOfEngines,
+      hasLandingGear
+    ) {
+      Car_1st_gen.call(this, brand, model, speed, fuelType);
+      this.numberOfEngines = numberOfEngines;
+      this.hasLandingGear = hasLandingGear;
+    }
+
+    Airplane.prototype.takeOff = function () {
+      console.log("airplane is taking off.");
+    };
+
+    Object.setPrototypeOf(Airplane.prototype, Car_1st_gen.prototype);
+    let Airplane_1 = new Airplane(
+      "Boeing 787 Dreamliner",
+      "787-9",
+      "954 km/h",
+      "kerosene",
+      "2 engines",
+      "two main landing gear assemblies and one nose gear assembly."
+    );
+
+    console.log(Airplane_1);
+    Airplane_1.brake()
+    Airplane_1.takeOff()
+  </script>
+</html>
