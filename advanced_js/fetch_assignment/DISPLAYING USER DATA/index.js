@@ -4,7 +4,7 @@ let data = [];
 
 // console.log("--->", data);
 function display_user_data() {
-  fetch("https://reqres.in/api/users")
+  fetch("https://reqres.n/api/users")
     .then((res) => {
       return res.json();
     })
@@ -13,7 +13,7 @@ function display_user_data() {
       createElement(data);
     })
     .catch((error) => {
-      console.log(error);
+      console.log("error");
     });
 }
 function createElement(data) {
