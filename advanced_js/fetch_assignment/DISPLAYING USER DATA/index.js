@@ -4,7 +4,7 @@ let data = [];
 
 // console.log("--->", data);
 function display_user_data() {
-  fetch("https://reqres.n/api/users")
+  fetch("https://reqres.in/api/users")
     .then((res) => {
       return res.json();
     })
