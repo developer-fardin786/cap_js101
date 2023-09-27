@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Omdb movie application</title>
+  </head>
+  <body>
+    <div class="navbar">
+      <h3>OMDb Movie Application</h3>
+      <input type="text" name="" id="movie_title" placeholder="search movie" />
+      <button onclick="search_movies()">search</button>
+    </div>
+    <div id="movies_container"></div>
+  </body>
+  <style>
+    .navbar {
+      width: 100%;
+      height: 60px;
+      background-color: rgb(91, 192, 222);
+      display: flex;
+      text-align: center;
+    }
+    .navbar > input {
+      margin-left: 50px;
+      margin-top: 20px;
+      height: 20px;
+    }
+    .navbar > button {
+      margin-left: 50px;
+      margin-top: 20px;
+      height: 26px;
+      width: 80px;
+      padding: 5px;
+      background-color: orangered;
+      border: none;
+      color: whitesmoke;
+      border-radius: 2px;
+    }
+    #movies_container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .card {
+      /* border: 1px solid black; */
+      padding: 20px;
+      margin: 20px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      border-radius: 5px;
+    }
+    .card>img{
+        border-radius: 5px;
+      
+    }
+  </style>
+  <script>
+    let api_key = "b19aa9a4";
+    // let API = "https://www.omdbapi.com/&apikey=b19aa9a4s=";
+
+    function search_movies() {
+      let searchParam = document.getElementById("movie_title").value;
+
+      fetch(`http://www.omdbapi.com/?apikey=${api_key}&s=${searchParam}`)
+        .then((result) => {
+          return result.json();
+        })
+        .then((movie) => {
+          console.log(movie);
+          display_movie(movie.Search);
+        })
+        .catch((error) => {
+          console.error("error");
+        });
+    }
+
+    let container = document.getElementById("movies_container");
+
+    function display_movie(movies) {
+      container.innerHTML = "";
+      if (!movies || movies.length === 0) {
+        let movie_notfound_container = document.createElement("div");
+        movie_notfound_container.textContent = "No Results Found";
+        container.appendChild(movie_notfound_container);
+        // console.log(container)
+        console.log("hello if");
+      } else {
+        movies.forEach((movie) => {
+          let movieCard = document.createElement("div");
+          movieCard.className = "card";
+
+          // Create Image
+          let posterElement = document.createElement("img");
+          posterElement.src = movie.Poster;
+
+          // Create Title
+          let titleElement = document.createElement("p");
+          titleElement.textContent = "Title : " + movie.Title;
+
+          // Create Year
+          let yearElement = document.createElement("p");
+          yearElement.textContent = "Year : " + movie.Year;
+
+          // Create IMDB ID;
+          let idElement = document.createElement("p");
+          idElement.textContent = "IMDB-ID : " + movie.imdbID;
+
+          // Create Type
+          let typeElement = document.createElement("p");
+          typeElement.textContent = "Type : " + movie.Type;
+          movieCard.append(
+            posterElement,
+            titleElement,
+            yearElement,
+            idElement,
+            typeElement
+          );
+          container.append(movieCard);
+        });
+      }
+    }
+  </script>
+</html>
