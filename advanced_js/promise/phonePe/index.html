@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PhonePe</title>
+  </head>
+  <style>
+    h1 {
+      text-align: center;
+      color: rgb(95, 37, 159);
+    }
+
+    .input_field {
+      width: 250px;
+      height: 200px;
+      margin: auto;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 10px;
+      border: none;
+      padding: 7px;
+      width: 80px;
+      background-color: rgb(95, 37, 159);
+      border-radius: 5px;
+      color: whitesmoke;
+      font-size: 18px;
+      font-weight: 600;
+    }
+  </style>
+  <body>
+    <h1>PhonePe</h1>
+    <div class="input_field">
+      <input type="text" placeholder="Enter Your Amount" id="amount" />
+      <button onclick="payment()">pay</button>
+      <h2 id="display"></h2>
+    </div>
+  </body>
+  <script>
+    let btn = document.getElementsByTagName("button");
+    function payment() {
+      let amount = +document.getElementById("amount").value;
+      let display = document.getElementById("display");
+      let amount_limit = 99999;
+
+      new Promise((resolve, reject) => {
+        if (amount > 0) {
+          display.innerText = "Porcessing....";
+          display.style.color = " rgb(95, 37, 159)";
+          console.log(display.innerText);
+        } else {
+          alert("please enter valid amount");
+        }
+        setTimeout(() => {
+          if (amount > 0 && amount <= amount_limit) {
+            resolve();
+          } else if (amount > amount_limit) {
+            reject();
+          }
+        }, 2000);
+      })
+        .then((resolve) => {
+          display.textContent = "Transaction Successfull ";
+          display.style.color = "Green";
+          console.log("done");
+        })
+        .catch((reject) => {
+          display.textContent = "Transaction Failed";
+          display.style.color = "Red";
+        });
+      setTimeout(() => {
+        display.innerText = "";
+        document.getElementById("amount").value = "";
+      }, 5000);
+    }
+  </script>
+</html>
