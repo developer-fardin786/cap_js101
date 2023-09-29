@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MCDONALD'S</title>
+  </head>
+  <body>
+    <style>
+      h2 {
+        text-align: center;
+      }
+
+      .food_item {
+        width: 90%;
+        margin: auto;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+        padding: 20px;
+      }
+      .food_card {
+        width: 350px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        border-radius: 5px;
+        padding: 10px;
+      }
+      food_card > img {
+        width: 100px;
+        height: 100px;
+      }
+      button {
+        width: 90px;
+        height: 30px;
+        border: none;
+        text-align: center;
+        background-color: rgb(35, 35, 230);
+        color: whitesmoke;
+        font-weight: 600;
+        border-radius: 4px;
+        margin: auto;
+      }
+      button:hover {
+        cursor: pointer;
+        background-color: green;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
+      #order_status {
+        display: none;
+        width: 90%;
+        max-height: 100px;
+        margin: auto;
+        background-color: rgb(220, 245, 236);
+        text-align: center;
+      }
+      #processing,
+      #status,
+      #order_id {
+        display: none;
+      }
+    </style>
+    <h2>MCDONALD,S Application</h2>
+    <div class="food_item">
+      <div class="food_card">
+        <img
+          src="https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/350/169110879759241.png"
+          alt=""
+          id="McVeggie Burger "
+        />
+        <h3>2 McVeggie Burger + Fries (L) + 2 Coke</h3>
+        <h3>RS-389</h3>
+        <input type="checkbox" id="checkbox" name="checkbox" />
+      </div>
+      <div class="food_card">
+        <img
+          src="https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/350/169110879759241.png"
+          alt=""
+          id="McChicken Burger "
+        />
+        <h3>2 McVeggie Burger + Fries (L) + 2 Coke</h3>
+        <h3>RS-389</h3>
+        <input type="checkbox" id="checkbox" name="checkbox" />
+      </div>
+      <div class="food_card">
+        <img
+          src="https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/350/169110879759241.png"
+          alt=""
+          id="McSpicy Paneer Burger "
+        />
+        <h3>2 McVeggie Burger + Fries (L) + 2 Coke</h3>
+        <h3>RS-389</h3>
+        <input type="checkbox" id="checkbox" name="checkbox" />
+      </div>
+
+      <button onclick="order_now()">Order Now</button>
+    </div>
+    <div id="order_status">
+      <h2 id="processing">Order Processing....</h2>
+      <h2 id="status">Order Completed</h2>
+      <p id="order_id">Order ID: <span id="random_id"></span></p>
+    </div>
+  </body>
+  <script>
+    let checkbox = document.querySelector("checkbox");
+
+    let ischecked = true;
+    let selectedItems = document.querySelector(
+      'input[name="checkbox"]:checked'
+    );
+
+    function order_now() {
+      if (ischecked) {
+        let random_time = Math.floor(Math.random() * 10000) + 1;
+
+        const selectedItems = document.querySelectorAll(
+          'input[name="checkbox"]:checked'
+        );
+
+        if (selectedItems.length === 0) {
+          alert("Please select at least one food item.");
+        } else {
+          document.getElementById("order_status").style.display = "block";
+          document.getElementById("processing").style.display = "block";
+
+          setTimeout(() => {
+            new Promise((resolve, reject) => {
+              resolve();
+            }).then((resolve) => {
+              document.getElementById("processing").style.display = "none";
+
+              // display  the element (order_staus and order id)
+
+              document.getElementById("status").style.display = "block";
+              document.getElementById("order_id").style.display = "block";
+
+              //random order id
+              order_id.textContent = `Order-id=${random_time}`;
+            });
+          }, random_time);
+        }
+      }
+      ischecked = false;
+    }
+    window.setTimeout(function () {
+      window.location.reload();
+    }, 30000);
+  </script>
+</html>
