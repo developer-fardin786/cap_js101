@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>constructor function </title>
+</head>
+<body>
+    <h1>constructor function</h1>
+</body>
+<script>
+    // "use strict"
+//      let str="hello"// it's not working beacuse we are using use strict
+//     console.log(str);
+//    console.log(this);
+
+//    let obj={
+//     name:"md fardin alam",
+//     country:"india",
+//     say_hello:function(){
+//          console.log(this);
+//     }
+//    }
+//    obj.say_hello()
+
+
+// let str="hello"
+// let obj={
+//     person_name:"martin",
+//     age:20
+// }
+// let obj1={
+//     person_name:"william",
+//     age:35
+// }
+
+// function hello(age, city
+// ){
+//     console.log(this.person_name +" is " ,age +" year old "+ " lives in ", city);
+// }
+// hello.call(obj)
+// hello.apply(obj,[20,"bihar"])
+// console.log( hello.bind(obj1,27,"araria"))
+// let result=hello.bind(obj1,34,"purnia")
+// result()
+function outer(){
+    function inner(){
+        return 12*4
+    }
+    return inner
+}
+console.log(outer())
+</script>
+</html>

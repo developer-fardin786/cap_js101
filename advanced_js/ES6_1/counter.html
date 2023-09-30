@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+  </head>
+  <body>
+    <h2>Counter Application</h2>
+
+    <p id="counting_value">0</p>
+    <button id="toggle_button">Start</button>
+    <button id="Increment">Increment</button>
+    <button id="decrement">Decrement</button>
+  </body>
+  <script>
+    class Counter {
+      constructor() {
+        this.value = 0;
+        this.timer = null;
+        this.isRunning = false;
+        this.updateDisplay();
+        this.addEventlistner();
+      }
+      addEventlistner() {
+        let toggle = document.getElementById("toggle_button");
+        toggle.addEventListener("click", () => {
+          this.toggle();
+        });
+
+        let increment = document.getElementById("Increment");
+        Increment.addEventListener("click", () => {
+          this.increment();
+        });
+        let decrement = document.getElementById("decrement");
+        decrement.addEventListener("click", () => {
+          this.decrement();
+        });
+      }
+
+      // toggle button handling (start and stop)
+      toggle() {
+        if (this.isRunning) {
+          this.stop();
+          console.log("stop toggle");
+        } else {
+          this.start();
+          console.log("start toggle");
+        }
+      }
+      // start counting automatic after 1 seconc value++
+      start() {
+        this.isRunning = true;
+        this.timer = setInterval(() => {
+          // calling increment function
+          this.increment();
+          console.log("start");
+        }, 1000);
+        document.getElementById("toggle_button").innerText = "Stop";
+      }
+      // increment function
+      increment() {
+        this.value++;
+        console.log("incremnt");
+        this.updateDisplay();
+      }
+
+      // decrement function
+      decrement() {
+        this.isRunning = false;
+        this.value--;
+        clearInterval(this.timer);
+        this.updateDisplay();
+
+      }
+
+      // value update in display
+      updateDisplay() {
+        console.log("display");
+        document.getElementById("counting_value").textContent = this.value;
+      }
+    }
+
+    let counter = new Counter();
+  </script>
+</html>

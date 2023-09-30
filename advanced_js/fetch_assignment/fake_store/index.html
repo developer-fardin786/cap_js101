@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Store</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <nav>
+        <a href="">Home</a>
+        <a href="">Grocery</a>
+        <a href="">Fashion</a>
+        <a href="">Electronics</a>
+        <a href="">Appliances</a>
+        <input type="text" placeholder="Search for Product,Brands and More">
+    </nav>
+    <div id="root"></div>
+</body>
+<script>
+    
+    fetch('https://fakestoreapi.com/products')
+    .then((res)=>{
+        return res.json()
+    })
+    .then((products)=>{
+     show_products(products)
+    })
+let root_element=document.getElementById('root')
+    function show_products(products){
+        products.forEach(element => {
+          let product_card=document.createElement('div')
+
+          let product_image=document.createElement('img')
+          product_image.src=element.image
+
+          let product_title=document.createElement('p')
+          product_title.textContent=element.title
+
+          let product_price=document.createElement('p')
+          product_price.textContent="Rs " + element.price
+
+          product_card.append(product_image,product_title,product_price)
+          root_element.append(product_card)
+      });
+    }
+</script>
+</html>
