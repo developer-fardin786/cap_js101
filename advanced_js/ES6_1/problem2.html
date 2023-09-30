@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Problem2</title>
+  </head>
+  <body>
+    <h2>convert ot lower case</h2>
+  </body>
+  <script>
+    //     Write a function to convert a character to lower case
+    // Use this function to convert a given word to lower case
+    // Use that function to convert an array of strings to array of lower case strings
+    // Sample Input ["MA", "SA", "I", "SCH", "OOL"]
+    // Sample Output ["ma", "sa", "i", "sch", "ool"]
+
+    let input=["MA", "SA", "I", "SCH", "OOL"]
+    
+    let arr=[]
+    let convert_to_loweCase=(word)=>{
+        let str=word.toLowerCase()
+        
+        arr.push(str)
+        
+    }
+
+    let convert_to_array_string_loweCAse=(array)=>{
+       for(let i=0;i<array.length;i++){
+           convert_to_loweCase(array[i])
+       }
+       console.log(arr)
+    }
+
+    convert_to_array_string_loweCAse(input)
+  </script>
+</html>
