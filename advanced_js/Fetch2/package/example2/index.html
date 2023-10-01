@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch Todos</title>
+  </head>
+  <style>
+    h1 {
+      text-align: center;
+    }
+    table {
+      width: 60%;
+      margin: auto;
+      border-collapse: collapse;
+      text-align: center;
+    }
+    table th {
+      /* border: 3px solid rgb(226, 224, 224); */
+      /* background-color: orangered; */
+      border: 1px solid black;
+      color: rgb(24, 67, 186);
+      font-weight: 600;
+      font-size: 1.5em;
+      padding: 5px;
+    }
+    table td {
+      border: 1px solid black;
+      padding: 5px;
+      font-weight: 600;
+      /* font-size: 1em; */
+    }
+
+    table tr:nth-child(odd):hover {
+        background-color: #8dcfc5;
+    } 
+    table tr:hover {
+  background-color: #7aeea7;
+}
+  </style>
+  <body>
+    <h1>Todos Application Fetch2</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </body>
+  <script src="./index.js">
+  
+  </script>
+</html>
