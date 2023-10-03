@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FETCH SCHOLAR</title>
+  </head>
+  <style>
+    .home_page {
+      width: 98%;
+      margin: auto;
+      /* border: 1px solid black; */
+    }
+    nav {
+      width: 100%;
+      height: 50px;
+      background-color: rgb(42, 85, 229);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    nav > a {
+      text-decoration: none;
+      color: whitesmoke;
+      background-color: orangered;
+      padding: 5px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+    input {
+      height: 1.8em;
+      width: 10em;
+    }
+    .product{
+        margin-top: 20px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-gap:2em;
+      /* border: 1px solid black; */
+      box-sizing: border-box;
+
+        
+    }
+    .product_card{
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      /* border: 1px solid black; */
+      text-align: center;
+
+    }
+    img{
+        width: 180px;
+        aspect-ratio: 1;
+        text-align: center;
+        margin: auto;
+    }
+ 
+  </style>
+  <body>
+    <div class="home_page">
+      <nav>
+        <a href="">Jwellery</a>
+        <a href="">Men's clothing</a>
+        <a href="">Women's clothing</a>
+        <a href="">Electronics </a>
+        <input type="text" placeholder="search product" onkeyup="filter_data()" id="search_data" />
+      </nav>
+      <div class="product"></div>
+    </div>
+  </body>
+  <script src="./index.js">
+  
+  </script>
+</html>
