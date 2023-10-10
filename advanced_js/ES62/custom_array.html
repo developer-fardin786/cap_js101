@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>custom arrayt</title>
+</head>
+
+<body>
+    <h2>custom array</h2>
+</body>
+
+</html>
+<script>
+    class MyArray {
+        constructor() {
+            this.array_ele = []
+            this.size = arguments.length
+
+            for (let i = 0; i < arguments.length; i++) {
+
+                this[i] = arguments[i]
+            }
+        }
+
+        // .push // Should add an element at the en
+
+        push(el) {
+            this[this.size++] = el
+        }
+
+        //.pop() // Should remove an element from the end.
+        pop() {
+            if (this.size == 0) {
+                return console.log(undefined)
+            }
+            let pop = this[--this.size];
+            delete this[this.size--]
+        }
+
+        //.top() // Should return the element at the last index.
+
+        top() {
+            if (this.size == 0) return console.log(undefined)
+
+            return console.log(this[this.size - 1])
+        }
+
+        // Should print the elements in a single line (e.g. [1,2,3,4]).
+
+        print() {
+            let array = []
+
+            for (let i = 0; i <this.size; i++) {
+                array.push(this[i])
+            }
+            console.log(array)
+
+        }
+
+     // Should print the elements in a single line in reverse order.
+
+     printReverse(){
+        let array=[]
+
+        for(let i=this.size-1;i>=0;i--){
+            array.push(this[i])
+        }
+        console.log(array)
+     }
+     // Should return the length of the stack
+
+      Size(){
+        return console.log(  this.size)
+      }
+    }
+
+
+    let custom_array = new MyArray(1, 2, 3, 4, 5,)
+    console.log(custom_array)
+    custom_array.push(9)
+    // custom_array.pop(2)
+    // custom_array.top()
+    // custom_array.print()
+    //   custom_array.printReverse()
+ custom_array.Size()
+</script>
